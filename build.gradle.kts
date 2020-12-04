@@ -1,3 +1,6 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     java
     kotlin("jvm") version "1.4.20"
@@ -26,7 +29,10 @@ val jar by tasks.getting(Jar::class) {
 }
 
 tasks {
-    shadowJar {
+    withType<KotlinCompile> {
+        kotlinOptions.jvmTarget = "1.8"
+    }
+    withType<ShadowJar> {
         archiveClassifier.set("")
     }
 }
