@@ -13,11 +13,16 @@ version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
+    maven(url = "https://jitpack.io")
 }
 
 dependencies {
-    implementation(files("libs/ldtk-api-1.0-SNAPSHOT.jar"))
-    kapt(files("libs/ldtk-processor-1.0-SNAPSHOT.jar"))
+    implementation("com.badlogicgames.gdx:gdx-backend-lwjgl3:1.9.12")
+    implementation("com.badlogicgames.gdx:gdx-platform:1.9.12:natives-desktop")
+    implementation("com.badlogicgames.gdx:gdx:1.9.12")
+    implementation("com.lehaine.gdx-ldtk-api:libgdx-backend:0.6.1")
+    implementation("com.lehaine.gdx-ldtk-api:ldtk-api:0.6.1")
+    kapt("com.lehaine.gdx-ldtk-api:libgdx-ldtk-processor:0.6.1")
     testCompile("junit", "junit", "4.12")
 }
 
