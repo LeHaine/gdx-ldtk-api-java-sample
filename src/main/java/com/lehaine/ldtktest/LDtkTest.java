@@ -16,8 +16,9 @@ public class LDtkTest {
 
         // get a level
         World.WorldLevel level = world.getAllLevels().get(0);
+        level.load(); // only need to load if not accessing any layers yet
 
-        // iterate over a layers tiles
+        // iterate over a layers tiles and loads the level behind the scenes if not yet loaded
         for (LayerAutoLayer.AutoTile tile : level.getLayerCavern_background().getAutoTiles()) {
             // logic for handling the tile
             int x = tile.getRenderX();
