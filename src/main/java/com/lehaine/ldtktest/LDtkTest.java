@@ -16,7 +16,6 @@ public class LDtkTest {
 
         // get a level
         World.WorldLevel level = world.getAllLevels().get(0);
-        level.load();
 
         // iterate over a layers tiles
         for (LayerAutoLayer.AutoTile tile : level.getLayerCavern_background().getAutoTiles()) {
