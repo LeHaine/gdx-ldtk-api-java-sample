@@ -12,12 +12,14 @@ public class LDtkTest {
     public static void main(String[] args) {
         // create new LDtk world
         World world = new World();
+        world.load();
 
         // get a level
         World.WorldLevel level = world.getAllLevels().get(0);
+        level.load();
 
         // iterate over a layers tiles
-        for (LayerAutoLayer.AutoTile tile : level.getLayerBackground().getAutoTiles()) {
+        for (LayerAutoLayer.AutoTile tile : level.getLayerCavern_background().getAutoTiles()) {
             // logic for handling the tile
             int x = tile.getRenderX();
         }
@@ -25,21 +27,18 @@ public class LDtkTest {
         // iterate over entities
         for (World.EntityMob mob : level.getLayerEntities().getAllMob()) {
             World.MobType type = mob.type;
-            Point patrolPoint = mob.getPatrol();
+            List<Point> patrolPoint = mob.getPatrol();
             int health = mob.getHealth();
             System.out.println(health);
         }
 
-        for (World.EntityCart cart : level.getLayerEntities().getAllCart()) {
-            // field arrays / lists
-            List<World.Items> items = cart.getItems();
-
-            for (World.Items item : items) {
-                System.out.println(item.name());
-                if (item == World.Items.Pickaxe) {
-                    // spawn pickaxe
-                }
+        for (World.EntityItem item : level.getLayerEntities().getAllItem()) {
+            World.Items type = item.getType();
+            System.out.println(type.name());
+            if (type == World.Items.Pickaxe) {
+                // spawn pickaxe
             }
+
         }
     }
 }
